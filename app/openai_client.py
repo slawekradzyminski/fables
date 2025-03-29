@@ -11,11 +11,9 @@ def get_openai_client() -> OpenAI:
 
 def generate_fable_and_prompts(world_description: str, main_character: str, age: int, num_images: int = 2, client: OpenAI = None) -> Tuple[str, List[str]]:
     """
-    Uses GPT-4O to generate both a fable and optimized DALL-E prompts for key scenes.
+    Uses GPT-4o to generate both a fable and optimized DALL-E prompts for key scenes.
     Returns the fable text and a list of image prompts.
     """
-    if client is None:
-        client = get_openai_client()
 
     messages = [
         {
@@ -81,9 +79,6 @@ def generate_illustration_images(prompts: List[str], client: OpenAI = None) -> L
     Uses standard quality settings for cost efficiency.
     Returns a list of image URLs.
     """
-    if client is None:
-        client = get_openai_client()
-
     image_urls = []
     for prompt in prompts:
         response = client.images.generate(

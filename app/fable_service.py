@@ -1,15 +1,14 @@
 from app.openai_client import generate_fable_and_prompts, generate_illustration_images, get_openai_client
 from openai import OpenAI
 
-def create_fable_with_images(world_description: str, main_character: str, age: int, num_images: int, client: OpenAI = None) -> dict:
+def create_fable_with_images(world_description: str, main_character: str, age: int, num_images: int, client: OpenAI | None = None) -> dict:
     """
     High-level function orchestrating the fable creation process:
     1) Generate fable text and optimized DALL-E prompts using GPT-4o
     2) Generate images using the optimized prompts
     3) Return a dict with the fable text and list of image URLs
     """
-    if client is None:
-        client = get_openai_client()
+    client = client or get_openai_client()
 
     # 1) Generate the fable and prompts
     fable_text, image_prompts = generate_fable_and_prompts(
