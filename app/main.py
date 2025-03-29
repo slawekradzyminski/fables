@@ -4,11 +4,21 @@ from typing import List
 from app.fable_service import create_fable_with_images
 from app.config import OPENAI_API_KEY
 from app.openai_client import get_openai_client
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="Fable Generator API",
     description="API to generate short fables with consistent storybook-style illustrations.",
     version="1.0.0"
+)
+
+# Add CORS middleware to allow cross-origin requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
 )
 
 class FableRequest(BaseModel):
