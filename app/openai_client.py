@@ -7,7 +7,7 @@ from typing import Tuple, List
 
 def get_openai_client() -> OpenAI:
     """Get an instance of the OpenAI client."""
-    return OpenAI()
+    return OpenAI(api_key=OPENAI_API_KEY)
 
 def generate_fable_and_prompts(world_description: str, main_character: str, age: int, num_images: int = 2, client: OpenAI = None) -> Tuple[str, List[str]]:
     """

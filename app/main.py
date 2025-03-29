@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Body, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List
 from app.fable_service import create_fable_with_images
 from app.config import OPENAI_API_KEY
@@ -12,10 +12,37 @@ app = FastAPI(
 )
 
 class FableRequest(BaseModel):
-    world_description: str
-    main_character: str
-    age: int
-    num_images: int = 2
+    world_description: str = Field(
+        description="Description of the world where the story takes place",
+        example="A whimsical steampunk city in the clouds where buildings float on giant copper balloons and mechanical birds deliver messages between towers"
+    )
+    main_character: str = Field(
+        description="Description of the main character of the story",
+        example="a young inventor mouse named Gizmo"
+    )
+    age: int = Field(
+        description="Target age of the audience",
+        example=8,
+        ge=1,
+        le=12
+    )
+    num_images: int = Field(
+        default=2,
+        description="Number of illustrations to generate",
+        example=2,
+        ge=1,
+        le=4
+    )
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "world_description": "A whimsical steampunk city in the clouds where buildings float on giant copper balloons and mechanical birds deliver messages between towers",
+                "main_character": "a young inventor mouse named Gizmo",
+                "age": 8,
+                "num_images": 2
+            }
+        }
 
 class FableResponse(BaseModel):
     fable_text: str
