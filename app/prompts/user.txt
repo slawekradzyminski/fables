@@ -1,0 +1,24 @@
+Write a short fable for a child of age {{ age }} about:
+- World Description: {{ world_description }}
+- Main Character: {{ main_character }}
+
+Then provide {{ num_images }} AI image generation prompts to illustrate key scenes.
+Make the prompts specific and detailed, optimized for the AI image generation model.
+
+STRICT FORMAT RULES
+- Return only a direct JSON object.
+- No Markdown, no code fences, no escaped characters (like \n or \\\").
+- All text must be plain text inside JSON fields.
+- Do not wrap JSON inside a string.
+- Do not escape newlines, quotes, or any other characters.
+
+Example of correct output:
+{
+  "fable": "Once upon a time, in a magical forest, there lived a wise old owl named Professor Hoot. One day...",
+  "moral": "Wisdom and kindness always light the way.",
+  "image_prompts": [
+    "An old wise owl perched on a glowing tree at night, surrounded by twinkling lights.",
+    "A group of small forest animals listening attentively to the owl's stories under a starlit sky."
+  ]
+}
+If you cannot comply exactly, do not answer.

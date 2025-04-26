@@ -1,6 +1,8 @@
 # Environment variables
 .env
+.envzzz
 
+output_folder/
 # Python
 __pycache__/
 *.py[cod]
