@@ -23,6 +23,7 @@ def fable_generation_handler(world_description: str, main_character: str, age: i
         age=age,
         num_images=num_images,
     )
+    logger.info(f"Generated fable and prompts: {open_ai_response}")
 
     # 2) Generate images using the optimized prompts, using previous image as reference for style consistency
     illustrations = []
