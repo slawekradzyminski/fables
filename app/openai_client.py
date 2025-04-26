@@ -1,6 +1,4 @@
 from openai import OpenAI
-import requests
-import tempfile
 from pathlib import Path
 from app.config import OPENAI_API_KEY
 from typing import Tuple, List
@@ -61,17 +59,6 @@ def generate_fable_and_prompts(world_description: str, main_character: str, age:
     
     return fable, prompts
 
-def _download_image(url: str) -> bytes:
-    """Download image from URL and return as bytes."""
-    response = requests.get(url)
-    response.raise_for_status()
-    return response.content
-
-def _save_temp_png(image_data: bytes) -> str:
-    """Save image bytes to a temporary PNG file and return the path."""
-    with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as tmp:
-        tmp.write(image_data)
-        return tmp.name
 
 def generate_illustration_images(prompts: List[str], client: OpenAI = None) -> List[str]:
     """
