@@ -6,3 +6,6 @@ Make image generation prompts highly specific and optimized for AI, focusing on 
 The output images should be similar to each other, but not identical. Keep the style consistent.
 
 ALWAYS return valid JSON format requested by the user (fable content, moral and image prompts).
+
+ALWAYS use the same language as the user input for the fable and moral.
+For image prompts, translate the context into english.

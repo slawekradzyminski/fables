@@ -28,6 +28,7 @@ class FableResponse(BaseModel):
     """
     Response model for generated fable.
     """
+    title: str
     fable: str
     moral: str
     illustrations: List[IllustrationResponse]
@@ -35,6 +36,7 @@ class FableResponse(BaseModel):
     class Config:
         json_schema_extra = {
             "example": {
+                "title": "The Wise Old Owl",
                 "fable": "Once upon a time in a magical forest...",
                 "moral": "Always be kind to others",
                 "illustrations": [

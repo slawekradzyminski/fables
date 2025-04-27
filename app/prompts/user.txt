@@ -14,6 +14,7 @@ STRICT FORMAT RULES
 
 Example of correct output:
 {
+  "title": "The Wise Old Owl",
   "fable": "Once upon a time, in a magical forest, there lived a wise old owl named Professor Hoot. One day...",
   "moral": "Wisdom and kindness always light the way.",
   "image_prompts": [

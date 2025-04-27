@@ -44,6 +44,7 @@ def fable_generation_handler(world_description: str, main_character: str, age: i
         prev_image_b64 = image_b64
 
     return {
+        "title": open_ai_response.title,
         "fable": open_ai_response.fable,
         "moral": open_ai_response.moral,
         "illustrations": illustrations
